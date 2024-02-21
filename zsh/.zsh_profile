@@ -1,0 +1,21 @@
+
+alias vim="nvim"
+
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
+
+export PERSONAL="$HOME/../../mnt/Data/Personal"
+export PATH=$PATH:~/scripts
+
+alias python='python3.12'
+alias pip='pip3.12'
+
+# Setting ctrl+f as shortcut key for fuzzyfinding
+bindkey -s ^f "fzf\n"
+# Setting ctrl+t for tmux-sessionizer
+bindkey -s ^t "tmux-sessionizer.sh\n"
+# Setting ctrl+b for buildcppfile
+bindkey -s ^b "build-cpp.sh\n"
+
+#For z directory jumper
+. ~/z/z.sh
