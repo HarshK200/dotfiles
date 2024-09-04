@@ -1,0 +1,15 @@
+# BEGIN_KITTY_THEME
+# Gruvbox Dark
+include current-theme.conf
+# END_KITTY_THEME
+
+
+# STOPS CARROT BLINK
+cursor_blink_interval 0
+cursor_shape block
+cursor_beam_thickness 8
+
+
+# BEGIN_KITTY_FONTS
+font_size        11
+# END_KITTY_FONTS

@@ -1,0 +1,52 @@
+alias v="nvim"
+alias vi="nvim"
+alias lgit="lazygit"
+
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
+
+export PERSONAL="$HOME/../../mnt/Data/Personal"
+export PATH=$PATH:~/.scripts
+export PATH="/home/harsh/.local/share/solana/install/active_release/bin":$PATH
+export PATH="/home/harsh/.local/zen/":$PATH
+
+alias python='python3.12'
+alias pip='pip3.12'
+
+#For z directory jumper
+. ~/z/z.sh
+
+# Gets rid of the dumb folder-background ls colors for hard-drive (makes it same as main colors)
+export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+
+# Setting ctrl+f as shortcut key for fuzzyfinding
+bindkey -s ^f "fzf\n"
+# Setting ctrl+t for tmux-sessionizer
+bindkey -s ^t "tmux-sessionizer.sh\n"
+# Setting ctrl+b for buildcppfile
+bindkey -s ^b "build-cpp.sh\n"
+
+
+
+
+# =========================== PACKAGE MANAGERS IMPORTS ==============================
+
+
+# loading the slow af nvm and node
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# bun completions
+[ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/harsh/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
