@@ -12,13 +12,8 @@ Make sure stow is installed on your system
 sudo apt-get install stow
 ```
 
-then just run the following command from within the repo directory:
-```sh
-export DOT=$(pwd)
-```
-
-
-## Now making the symlinks (if you have no idea what those are just copy the below commands and run them)
+then just run the following command from within the repo directory
+## making the symlinks (if you have no idea what those are just copy the below commands and run them)
 ```sh
 stow -v -R -t ~ nvim
 stow -v -R -t ~ tmux
