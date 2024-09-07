@@ -6,3 +6,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+
+-- Set indenting to 2 spaces for specific filetypes
+vim.api.nvim_exec(
+	[[
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact,html,css,json setlocal shiftwidth=2
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact,html,css,json setlocal softtabstop=2
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact,html,css,json setlocal tabstop=2
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact,html,css,json setlocal expandtab
+]],
+	false
+)
