@@ -9,6 +9,7 @@ export PERSONAL="$HOME/../../mnt/Data/Personal"
 export PATH=$PATH:~/.scripts
 export PATH="/home/harsh/.local/share/solana/install/active_release/bin":$PATH
 export PATH="/home/harsh/.local/zen/":$PATH
+export PATH="$PATH:/opt/nvim/bin"
 
 alias python='python3.12'
 alias pip='pip3.12'

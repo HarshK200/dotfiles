@@ -224,10 +224,10 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +2%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
 
 # Commands to Always execute set's the wallpaper
-exec_always feh --bg-scale ~/Pictures/Wallpapers/coffeeshop\ lofi\ wallpaper.jpg
+exec_always feh --bg-scale ~/Pictures/Wallpapers/comfy\ night\ vibe.png
 
 # picom to make the terminal transparent
-# exec_always picom --daemon
+exec_always picom --daemon
 
 # touchpad settings for the laptop
 exec --no-startup-id xinput set-prop "ELAN1300:00 04F3:3104 Touchpad" "libinput Natural Scrolling Enabled" 1

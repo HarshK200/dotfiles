@@ -13,7 +13,6 @@ return {
 		vim.keymap.set("n", "<M-n>", "<Esc>:NeotermToggle<CR>a", { noremap = true, silent = true })
 		vim.keymap.set("i", "<M-n>", "<Esc>:NeotermToggle<CR>a", { noremap = true, silent = true })
 		vim.keymap.set("v", "<M-n>", "<Esc>:NeotermToggle<CR>a", { noremap = true, silent = true })
-		-- vim.keymap.set("n", "<C-k>", "<C-\\><C-n><C-w>p<CR>a", { noremap = true, silent = true })
 		vim.keymap.set("t", "<M-n>", "<C-\\><C-n>:NeotermToggle<CR>", { noremap = true, silent = true })
 		vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>p", { noremap = true, silent = true })
 

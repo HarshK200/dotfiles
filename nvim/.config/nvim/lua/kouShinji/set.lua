@@ -8,7 +8,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
--- Set word/line wrap to true
+-- Set word/line wrap to false
 vim.opt.wrap = false
 
 -- search settings
@@ -35,8 +35,13 @@ vim.opt.signcolumn = "yes"
 -- The swap file and backup file stuff like the . file it creates and shit annoying stuff turning it off
 vim.opt.swapfile = false
 vim.opt.backup = false
+-- undotree directory
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- Primeagen stuff i don't understand but it's good
-vim.opt.scrolloff = 8
+-- gives 4 lines of padding to cursor when scrolling off-page
+vim.opt.scrolloff = 4
+
+-- split windows default side
+vim.opt.splitright = true -- split vertical to right side
+vim.opt.splitbelow = true -- split horizontal to bottom side
