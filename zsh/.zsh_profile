@@ -11,6 +11,7 @@ export PATH="/home/harsh/.local/share/solana/install/active_release/bin":$PATH
 export PATH="/home/harsh/.local/zen/":$PATH
 export PATH="/opt/nvim/bin":$PATH
 export PATH="/usr/local/go/bin":$PATH
+export PATH="/home/harsh/go/bin/":$PATH
 
 alias python='python3.12'
 alias pip='pip3.12'
