@@ -1,3 +1,7 @@
+# This is how the final setup looks like
+![image](https://github.com/user-attachments/assets/9289007e-e57b-496b-b258-cfd0d1932ad2)
+
+
 # How to set up my dotfiles?
 Easy just git clone the repo anywhere on your system go into that directory
 ```sh
