@@ -5,6 +5,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
+		"simrat39/rust-tools.nvim",
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -81,16 +82,16 @@ return {
 		mason_lspconfig.setup_handlers({
 			--  will be called automatically for all the servers that don't have a dedicated handler
 			function(server_name)
-                -- this if statement is for the stupid deperated warning fix
-                if server_name == "tsserver" then
-                    server_name = "ts_ls"
-                end
+				-- this if statement is for the stupid deperated warning fix
+				if server_name == "tsserver" then
+					server_name = "ts_ls"
+				end
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,
 
-            --custom handler for the graphql
+			--custom handler for the graphql
 			["graphql"] = function()
 				-- configure graphql language server
 				lspconfig["graphql"].setup({
@@ -99,7 +100,7 @@ return {
 				})
 			end,
 
-            --custom handler for the lua_ls
+			--custom handler for the lua_ls
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
@@ -114,6 +115,31 @@ return {
 								callSnippet = "Replace",
 							},
 						},
+					},
+				})
+			end,
+
+			--custom handler for rust
+			["rust_analyzer"] = function()
+				local rt = require("rust-tools")
+				rt.setup({
+					server = {
+						capabilities = capabilities,
+						settings = {
+							["rust-analyzer"] = {
+								cargo = {
+									loadOutDirsFromCheck = true,
+								},
+								procMacro = {
+									enable = true,
+								},
+							},
+						},
+						on_attach = function(_, bufnr)
+							-- Custom key mappings or other setup
+							vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+							vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+						end,
 					},
 				})
 			end,
