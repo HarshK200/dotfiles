@@ -7,7 +7,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-
 -- Set indenting to 2 spaces for specific filetypes
 vim.api.nvim_exec(
 	[[
@@ -18,3 +17,11 @@ vim.api.nvim_exec(
 ]],
 	false
 )
+
+-- for plugings auto update
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = vim.api.nvim_create_augroup("autoupdate", { clear = true }),
+	callback = function()
+		require("lazy").update({ show = false })
+	end,
+})
