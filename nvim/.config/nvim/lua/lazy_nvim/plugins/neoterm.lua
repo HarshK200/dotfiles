@@ -4,7 +4,7 @@ return {
 		-- Setup global config
 		require("neoterm").setup({
 			clear_on_run = true, -- run clear command before user specified commands
-			mode = "horizontal", -- vertical/horizontal/fullscreen
+			position = "bottom", -- vertical/horizontal/fullscreen
 			noinsert = true, -- disable entering insert mode when opening the neoterm window
 		})
 
@@ -17,7 +17,7 @@ return {
 		vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>p", { noremap = true, silent = true })
 
 		-- Override global config on a specific open call
-		neoterm.open({ mode = "horizontal", noinsert = true })
+		neoterm.open({ position = "bottom", noinsert = true })
 		neoterm.close()
 		neoterm.toggle()
 		neoterm.run("ls")
