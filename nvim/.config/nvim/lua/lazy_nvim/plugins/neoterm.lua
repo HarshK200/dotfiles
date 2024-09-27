@@ -5,6 +5,7 @@ return {
 		require("neoterm").setup({
 			clear_on_run = true, -- run clear command before user specified commands
 			position = "bottom", -- vertical/horizontal/fullscreen
+            height = "45%",
 			noinsert = true, -- disable entering insert mode when opening the neoterm window
 		})
 
