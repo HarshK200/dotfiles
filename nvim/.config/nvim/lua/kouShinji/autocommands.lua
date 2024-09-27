@@ -18,10 +18,11 @@ vim.api.nvim_exec(
 	false
 )
 
--- for plugings auto update
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = vim.api.nvim_create_augroup("autoupdate", { clear = true }),
-	callback = function()
-		require("lazy").update({ show = false })
-	end,
-})
+-- NOTE: for plugings auto update
+
+-- vim.api.nvim_create_autocmd("VimEnter", {
+-- 	group = vim.api.nvim_create_augroup("autoupdate", { clear = true }),
+-- 	callback = function()
+-- 		require("lazy").update({ show = false })
+-- 	end,
+-- })
