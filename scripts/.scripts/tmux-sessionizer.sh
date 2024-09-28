@@ -13,7 +13,7 @@ tmux has-session -t="$selected_name" 2>/dev/null
 # $? holds the exit status of the last executed command
 if [ $? != 0 ]; then
     # the -d tag is VERY IMP! this creats a new session in detached mode
-    tmux new-session -d -s "$selected_name"
+    tmux new-session -d -s "$selected_name" -c "$selected"
 fi
 
 tmux switch-client -t "$selected_name" 2>/dev/null
