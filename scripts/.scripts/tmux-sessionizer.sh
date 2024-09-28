@@ -16,5 +16,8 @@ if [ $? != 0 ]; then
     tmux new-session -d -s "$selected_name"
 fi
 
-# attaches to selected session if it didn't existed before then it was created in the above if statement
-tmux switch-client -t "$selected_name"
+tmux switch-client -t "$selected_name" 2>/dev/null
+
+if [ $? != 0 ]; then
+    tmux attach -t "$selected_name"
+fi
