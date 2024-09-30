@@ -8,6 +8,9 @@ return {
 		"simrat39/rust-tools.nvim",
 	},
 	config = function()
+		-- Set the lsp.buf.hover() window background color
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1c1c1c" })
+
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
@@ -142,6 +145,17 @@ return {
 					},
 				})
 			end,
+
+			--custom handler for sql
+			-- ["sqlls"] = function()
+			-- 	lspconfig["sqlls"].setup({
+			-- 		capabilities = capabilities,
+			-- 		filetypes = { "sql", "mysql", "psql" },
+			-- 		root_dir = function(_)
+			-- 			return vim.loop.cwd()
+			-- 		end,
+			-- 	})
+			-- end,
 		})
 	end,
 }
