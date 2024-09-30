@@ -8,9 +8,6 @@ return {
 		"simrat39/rust-tools.nvim",
 	},
 	config = function()
-		-- Set the lsp.buf.hover() window background color
-		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1c1c1c" })
-
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
@@ -156,6 +153,31 @@ return {
 			-- 		end,
 			-- 	})
 			-- end,
+		})
+
+
+
+
+		------------------------ UI STUFF ------------------------
+		-- Set the lsp.buf.hover() window background color
+		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1c1c1c" })
+		local border = {
+			{ "╭", "FloatBorder" },
+			{ "─", "FloatBorder" },
+			{ "╮", "FloatBorder" },
+			{ "│", "FloatBorder" },
+			{ "╯", "FloatBorder" },
+			{ "─", "FloatBorder" },
+			{ "╰", "FloatBorder" },
+			{ "│", "FloatBorder" },
+		}
+		-- Override the LSP hover handler to use the rounded border
+		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+			border = border,
+		})
+		-- You can also do the same for signatureHelp or other floating windows if desired
+		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+			border = border,
 		})
 	end,
 }
