@@ -26,3 +26,13 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		require("lazy").update({ show = false })
 	end,
 })
+
+--NOTE: for cursor change on insert
+-- Change cursor to a vertical line in insert mode
+vim.api.nvim_exec(
+	[[
+  autocmd InsertEnter * silent! execute 'let &t_SI = "\e[6 q"'
+  autocmd InsertLeave * silent! execute 'let &t_EI = "\e[2 q"'
+]],
+	false
+)
