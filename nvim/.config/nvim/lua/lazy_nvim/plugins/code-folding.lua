@@ -54,6 +54,6 @@ return {
 		})
 
         -- setting how DEEP the code folding should be (the higher the number the less DEEPER the code folding if you know what i mean 😏)
-        vim.o.foldminlines = 15
+        vim.o.foldminlines = 12
 	end,
 }
