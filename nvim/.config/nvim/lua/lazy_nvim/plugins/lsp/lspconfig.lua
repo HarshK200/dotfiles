@@ -143,6 +143,15 @@ return {
 				})
 			end,
 
+			--custom handler for the html
+			["html"] = function()
+				-- configure html language server
+				lspconfig["html"].setup({
+					capabilities = capabilities,
+					filetypes = { "html", "template" },
+				})
+			end,
+
 			--custom handler for sql
 			-- ["sqlls"] = function()
 			-- 	lspconfig["sqlls"].setup({
@@ -154,9 +163,6 @@ return {
 			-- 	})
 			-- end,
 		})
-
-
-
 
 		------------------------ UI STUFF ------------------------
 		-- Set the lsp.buf.hover() window background color

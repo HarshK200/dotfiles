@@ -224,7 +224,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +2%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
 
 # Commands to Always execute set's the wallpaper
-exec_always feh --bg-scale ~/Pictures/Wallpapers/comfy\ night\ vibe.png
+exec_always feh --bg-scale ~/Pictures/Wallpapers/mystical\ forest.png
 
 # picom to make the terminal transparent
 exec_always picom --daemon
