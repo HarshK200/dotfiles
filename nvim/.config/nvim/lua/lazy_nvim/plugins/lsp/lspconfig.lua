@@ -80,7 +80,7 @@ return {
 		end
 
 		mason_lspconfig.setup_handlers({
-			--  will be called automatically for all the servers that don't have a dedicated handler
+			--  NOTE: will be called automatically for all the servers that don't have a dedicated handler
 			function(server_name)
 				-- this if statement is for the stupid deperated warning fix
 				if server_name == "tsserver" then

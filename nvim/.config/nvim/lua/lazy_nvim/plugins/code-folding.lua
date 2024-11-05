@@ -29,12 +29,12 @@ return {
 		vim.o.foldlevelstart = 99
 		vim.o.foldenable = true
 
-        -- just the arrow icons for open close folding
+		-- just the arrow icons for open close folding
 		vim.cmd([[ set fillchars=foldopen:▾,foldclose:▸ ]])
 		vim.cmd([[ highlight Folded guifg=None guibg=None ]])
 
-        -- Use 'expr' foldmethod with nvim-ufo
-        vim.o.foldmethod = 'expr'
+		-- Use 'expr' foldmethod with nvim-ufo
+		vim.o.foldmethod = "expr"
 
 		-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 		vim.keymap.set("n", "zr", require("ufo").openAllFolds)
@@ -46,14 +46,14 @@ return {
 			end
 		end)
 
-        -- just setting up ufo with lsp
+		-- just setting up ufo with lsp
 		require("ufo").setup({
 			provider_selector = function()
-				return { "lsp" }
+				return { "indent", "lsp" }
 			end,
 		})
 
-        -- setting how DEEP the code folding should be (the higher the number the less DEEPER the code folding if you know what i mean 😏)
-        vim.o.foldminlines = 12
+		-- setting how DEEP the code folding should be (the higher the number the less DEEPER the code folding if you know what i mean 😏)
+		vim.o.foldminlines = 5
 	end,
 }
