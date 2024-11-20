@@ -1,12 +1,12 @@
 // vim: filetype=scss
 
-@theme "themes/nord.rasi"
+//@theme "themes/nord.rasi"
 
 configuration {
   // font: "CaskaydiaCove Nerd Font 12";
   font: "JetBrains Mono Nerd Font 12";
   show-icons: true;
-  terminal: "gnome-terminal";
+  terminal: "kitty";
   case-sensitive: false;
   matching: "fuzzy";
 
@@ -42,3 +42,5 @@ configuration {
   // kb-row-last: "End,Ctrl+Shift+g";
   kb-cancel: "Escape,Control+c";
 }
+//@theme "/home/harsh/.local/share/rofi/themes/spotlight.rasi"
+@theme "/home/harsh/.local/share/rofi/themes/spotlight-dark.rasi"
