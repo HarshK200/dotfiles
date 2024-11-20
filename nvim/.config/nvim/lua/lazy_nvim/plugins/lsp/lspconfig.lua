@@ -153,15 +153,15 @@ return {
 			end,
 
 			--custom handler for sql
-			-- ["sqlls"] = function()
-			-- 	lspconfig["sqlls"].setup({
-			-- 		capabilities = capabilities,
-			-- 		filetypes = { "sql", "mysql", "psql" },
-			-- 		root_dir = function(_)
-			-- 			return vim.loop.cwd()
-			-- 		end,
-			-- 	})
-			-- end,
+			["sqlls"] = function()
+				lspconfig["sqlls"].setup({
+					capabilities = capabilities,
+					filetypes = { "sql", "mysql", "psql" },
+					root_dir = function(_)
+						return vim.loop.cwd()
+					end,
+				})
+			end,
 		})
 
 		------------------------ UI STUFF ------------------------
