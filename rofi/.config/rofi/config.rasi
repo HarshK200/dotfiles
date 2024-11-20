@@ -8,7 +8,7 @@ configuration {
   show-icons: true;
   terminal: "kitty";
   case-sensitive: false;
-  matching: "fuzzy";
+  // matching: "fuzzy";
 
   drun {
     display-name: "";
