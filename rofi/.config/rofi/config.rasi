@@ -43,4 +43,7 @@ configuration {
   kb-cancel: "Escape,Control+c";
 }
 //@theme "/home/harsh/.local/share/rofi/themes/spotlight.rasi"
-@theme "/home/harsh/.local/share/rofi/themes/spotlight-dark.rasi"
+//@theme "/home/harsh/.local/share/rofi/themes/spotlight-dark.rasi"
+//@theme "/home/harsh/.local/share/rofi/themes/spotlight-dark.rasi"
+// @theme "/home/harsh/.local/share/rofi/themes/spotlight-dark.rasi"
+@theme "/home/harsh/.config/rofi/themes/spotlight-dark.rasi"
