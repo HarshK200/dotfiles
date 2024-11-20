@@ -25,3 +25,6 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 -- remaps ctrl+k and ctrl+j to cnext and cprev respectively
 vim.keymap.set("n", "<C-k>", ":cprev<CR>")
 vim.keymap.set("n", "<C-j>", ":cnext<CR>")
+
+-- remaping the stupid fu*king sql filetype plugin omin_key from ctrl+c to ctrl+j
+vim.g.ftplugin_sql_omni_key = '<C-j>'

@@ -200,18 +200,6 @@ bar {
 #------------CUSTOM CONFIG STARTS------------
 #--------------------------------------------
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #ffffff
-
-
-# MY CUSTOM CONFIGS
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -244,11 +232,17 @@ bindsym Print exec --no-startup-id /usr/bin/flameshot gui
 
 # colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #61AFEF #61AFEF #61AFEF #61AFEF
+client.focused          #5E698E #5E698E #5E698E #5E698E
 client.unfocused        #2e3440 #2e3440 #2e3440 #2e3440
 client.focused_inactive #3b4252 #3b4252 #3b4252 #3b4252
 client.placeholder      #d8dee9 #d8dee9 #d8dee9 #d8dee9
 client.urgent           #bf616a #bf616a #bf616a #bf616a
+
+client.background       #ffffff
+
+
+# MY CUSTOM CONFIGS
+
 
 # =======================
 
