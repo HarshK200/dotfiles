@@ -20,6 +20,7 @@ return {
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
+                csharp = { "csharpier" },
 			},
 
 			-- NOTE: Uncomment for format on save

@@ -1,29 +1,5 @@
-alias v="nvim"
-alias vi="nvim"
-alias lgit="lazygit"
-
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
-
-
-export PERSONAL="$HOME/../../mnt/Data/Personal"
-export PATH=$PATH:~/.scripts
-export PATH="/home/harsh/.local/share/solana/install/active_release/bin":$PATH
-export PATH="/home/harsh/.local/zen/":$PATH
-
-# for node version manager
-export PATH="/opt/nvim/bin":$PATH
-
-# for golang version manager
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
-
-# for python
-alias python='python3.12'
-alias pip='pip3.12'
 
 #For z directory jumper
 . ~/z/z.sh
@@ -31,8 +7,12 @@ alias pip='pip3.12'
 # Gets rid of the dumb folder-background ls colors for hard-drive (makes it same as main colors)
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
-# Setting ctrl+f as shortcut key for fuzzyfinding
-bindkey -s ^f "fzf\n"
+
+
+
+# =========================== scripts keybinds ==============================
+export PATH=$PATH:~/.scripts
+
 # Setting ctrl+t for tmux-sessionizer
 bindkey -s ^t "tmux-sessionizer.sh\n"
 # Setting ctrl+b for buildcppfile
@@ -40,9 +20,28 @@ bindkey -s ^b "build-cpp.sh\n"
 
 
 
+# =========================== MY CUSTOM ALIAS ==============================
 
-# =========================== PACKAGE MANAGERS IMPORTS ==============================
+# for neovim (the greatest editor of all time)
+alias v="nvim"
+alias vi="nvim"
 
+# for lazygit
+alias lgit="lazygit"
+
+# for python
+alias python='python3.12'
+alias pip='pip3.12'
+
+# for list-commands
+# alias l=
+alias t="tree -L 1"
+
+
+
+
+
+# =========================== LANGUAGES AND THERE PACKAGE MANAGER IMPORTS ==============================
 
 # loading the slow af nvm and node
 export NVM_DIR="$HOME/.nvm"
@@ -61,4 +60,25 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
+# for golang version manager
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+
+
+# =========================== PROGRAM PATH VARIABLS EXPORTS ==============================
+
+# for solana cli web3
+export PATH="/home/harsh/.local/share/solana/install/active_release/bin":$PATH
+
+# zen browser path
+export PATH="/home/harsh/.local/zen/":$PATH
+
+# for asperite (pixel art software)
+export PATH="/home/harsh/.local/share/aseprite/bin/":$PATH
+
+# the greatest editor of all time
+export PATH="/opt/nvim/bin":$PATH
