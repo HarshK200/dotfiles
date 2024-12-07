@@ -246,10 +246,7 @@ client.background       #ffffff
 
 # =======================
 
-
 focus_follows_mouse no
-workspace_auto_back_and_forth yes
-
 
 
 # =======================
@@ -266,6 +263,5 @@ gaps outer 5
 # bindsym $mod+shift+p gaps inner current minus 5; gaps outer current minus 5
 
 # ==================
-
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
