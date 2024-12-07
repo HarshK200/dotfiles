@@ -164,26 +164,9 @@ return {
 			end,
 
 			["omnisharp"] = function()
-				local pid = tostring(vim.fn.getpid())
-				local omnisharp_bin = vim.fn.stdpath("data") .. "/mason/bin/omnisharp"
-
 				lspconfig["omnisharp"].setup({
-					cmd = { omnisharp_bin, "--languageserver", "--hostPID", pid },
-					root_dir = function(fname)
-						return lspconfig.util.root_pattern(".sln", ".csproj")(fname)
-							or lspconfig.util.find_git_ancestor(fname)
-							or vim.fn.getcwd()
-					end,
+					cmd = { "omnisharp" }, -- Ensure 'omnisharp' binary is in your PATH
 					capabilities = capabilities,
-					settings = {
-						omnisharp = {
-							useModernNet = true,
-							enableEditorConfigSupport = true,
-							enableMsBuildLoadProjectsOnDemand = false,
-							organizeImportsOnFormat = true,
-							enableRoslynAnalyzers = true,
-						},
-					},
 				})
 			end,
 		})
