@@ -26,6 +26,9 @@ bindkey -s ^b "build-cpp.sh\n"
 alias v="nvim"
 alias vi="nvim"
 
+# for neovim godot script
+alias vg="nvim-godot.sh"
+
 # for lazygit
 alias lgit="lazygit"
 

@@ -45,3 +45,5 @@ vim.opt.scrolloff = 4
 -- split windows default side
 vim.opt.splitright = true -- split vertical to right side
 vim.opt.splitbelow = true -- split horizontal to bottom side
+
+vim.opt.colorcolumn = "100"
