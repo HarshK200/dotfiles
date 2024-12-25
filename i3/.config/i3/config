@@ -197,8 +197,9 @@ bar {
 }
 
 
-#------------CUSTOM CONFIG STARTS------------
-#--------------------------------------------
+
+#--------------------------------CUSTOM CONFIG STARTS--------------------------------
+
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -228,9 +229,8 @@ bindsym Print exec --no-startup-id /usr/bin/flameshot gui
 # exec xrandr --output HDMI-A-0 --auto --right-of eDP
 
 
- # ==================
+# ==============================colors==============================
 
-# colors
 # class                 border  backgr. text    indicator child_border
 client.focused          #5E698E #5E698E #5E698E #5E698E
 client.unfocused        #2e3440 #2e3440 #2e3440 #2e3440
@@ -241,17 +241,13 @@ client.urgent           #bf616a #bf616a #bf616a #bf616a
 client.background       #ffffff
 
 
-# MY CUSTOM CONFIGS
-
-
-# =======================
+# ==============================mouse config==============================
 
 focus_follows_mouse no
 
 
-# =======================
+# ==============================gaps==============================
 
-# gaps
 for_window [class=".*"] border pixel 2
 gaps inner 15
 gaps outer 5
@@ -262,6 +258,12 @@ gaps outer 5
 # decrease gaps
 # bindsym $mod+shift+p gaps inner current minus 5; gaps outer current minus 5
 
-# ==================
+
+# ==============================rofi keybind==============================
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
+
+
+# ==============================custom floating windows==============================
+
+for_window [class="Gnome-calculator"] floating enable
