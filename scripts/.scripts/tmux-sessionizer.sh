@@ -3,20 +3,19 @@
 # sub-directories included but not the directory itself
 directories=(
     "$HOME/Desktop/"
-    "$HOME/Desktop/rust/"
     "$HOME/Desktop/go/"
-    "/mnt/"
-    "/mnt/Data/code/"
-    "/mnt/Data/code/webDev/"
-    "/mnt/Data/code/cohort3/"
+    "/media/harsh/DATA/code/"
+    "/media/harsh/DATA/code/webDev/"
+    "/media/harsh/DATA/code/cohort3/"
 )
 
 extra_directories=(
     "$HOME/Desktop"
     "/home/harsh/.dotfiles"
     "$HOME/.scripts"
-    "/mnt/Data/configs"
-    "/mnt/Data/code"
+    "/media/harsh/DATA/"
+    "/media/harsh/DATA/code"
+    "/media/harsh/DATA/configs"
 )
 
 found_subdirs=$(printf "%s\n" "${directories[@]}" | xargs -I {} find {} -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
