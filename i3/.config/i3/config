@@ -212,6 +212,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +2%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
 
+# When system starts set brightness to 25% by default
+exec_always brightnessctl set 25%
+
 # Commands to Always execute set's the wallpaper
 exec_always feh --bg-scale ~/Pictures/mystical\ forest.jpeg
 
