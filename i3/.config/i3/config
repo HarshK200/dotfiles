@@ -265,6 +265,7 @@ gaps outer 5
 # ==============================rofi keybind==============================
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+d exec --no-startup-id rofimoji
 
 
 # ==============================custom floating windows==============================
