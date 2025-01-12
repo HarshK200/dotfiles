@@ -27,7 +27,7 @@ configuration {
   kb-row-up: "Up,Control+k";
   kb-row-down: "Down,Control+j";
   kb-accept-entry: "Return,KP_Enter";
-  terminal: "gnome-terminal";
+  terminal: "kitty";
   kb-remove-to-eol: "Control+Shift+e";
   kb-remove-char-back: "BackSpace";
   kb-move-char-back: "Left";
