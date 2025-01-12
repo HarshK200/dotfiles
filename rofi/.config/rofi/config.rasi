@@ -22,7 +22,7 @@ configuration {
     display-name: "";
   }
 
-  modi: "drun,run,window";
+  modi: "drun,run,window,calc";
 
   kb-row-up: "Up,Control+k";
   kb-row-down: "Down,Control+j";
