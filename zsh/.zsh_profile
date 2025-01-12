@@ -13,6 +13,8 @@ export PATH=$PATH:~/.scripts
 bindkey -s ^t "tmux-sessionizer.sh\n"
 # Setting ctrl+b for buildcppfile
 bindkey -s ^b "build-cpp.sh\n"
+# Fuzzy find and cd to directory
+bindkey -s ^f "source fuzzycd.sh\n"
 
 
 

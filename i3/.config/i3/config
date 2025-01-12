@@ -270,3 +270,4 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 # ==============================custom floating windows==============================
 
 for_window [class="Gnome-calculator"] floating enable
+for_window [class="xpad"] floating enable
