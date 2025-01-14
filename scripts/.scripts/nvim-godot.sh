@@ -4,7 +4,7 @@ query="$1"
 
 # Base directory containing the projects
 # YOU NEED TO CHANGE THIS
-basePath="$HOME/Desktop/godot-projects/"
+basePath="$HOME/Desktop/godot_projects/"
 
 # Ensure the base path exists
 if [[ ! -d "$basePath" ]]; then
