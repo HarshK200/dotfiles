@@ -83,3 +83,10 @@ export PATH="/home/harsh/.local/share/aseprite/bin/":$PATH
 
 # the greatest editor of all time
 export PATH="/opt/nvim/bin":$PATH
+
+
+# =========================== For japanese typing lanugage setup ==============================
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+export SDL_IM_MODULE="fcitx"
+export XMODIFIERS="@im=fcitx"

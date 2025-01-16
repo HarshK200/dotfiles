@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
-# sub-directories included but not the directory itself
+# NOTE: SUB-DIRECTORIES INCLUDED but not the directory itself
 directories=(
     "$HOME/Desktop/"
     "$HOME/Desktop/go/"
     "/media/harsh/DATA/code/"
     "/media/harsh/DATA/code/webDev/"
     "/media/harsh/DATA/code/cohort3/"
+    "/media/harsh/DATA/code/cohort3/projects/"
+    "/media/harsh/DATA/code/cohort3/web_development/"
 )
 
+# NOTE: SUB-DIRECTORIES NOT INCLUDED
 extra_directories=(
     "$HOME/Desktop"
     "/home/harsh/.dotfiles"
