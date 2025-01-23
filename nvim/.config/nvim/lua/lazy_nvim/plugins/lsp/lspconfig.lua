@@ -82,10 +82,6 @@ return {
 		mason_lspconfig.setup_handlers({
 			--  NOTE: will be called automatically for all the servers that don't have a dedicated handler
 			function(server_name)
-				-- this if statement is for the stupid deperated warning fix
-				if server_name == "tsserver" then
-					server_name = "ts_ls"
-				end
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
 				})
