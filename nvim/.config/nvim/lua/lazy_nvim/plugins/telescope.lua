@@ -32,7 +32,7 @@ return {
             ["<C-t>"] = trouble_telescope.open,
           },
         },
-        file_ignore_patterns = { "node_modules", ".git", ".next"}
+        file_ignore_patterns = { "node_modules", ".git", "next/"}
       },
     })
 
