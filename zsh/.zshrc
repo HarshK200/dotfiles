@@ -104,3 +104,6 @@ source $ZSH/oh-my-zsh.sh
 
 # loading my custom zsh_profile
 source ~/.zsh_profile
+
+# Created by `pipx` on 2025-02-07 07:08:22
+export PATH="$PATH:/home/harsh/.local/bin"

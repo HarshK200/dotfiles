@@ -38,7 +38,8 @@ alias pip='pip3.12'
 # alias l=
 alias t="tree -L 1"
 
-
+# just a quality of life alias
+alias nd="npm run dev"
 
 
 
