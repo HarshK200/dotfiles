@@ -46,4 +46,4 @@ vim.opt.scrolloff = 4
 vim.opt.splitright = true -- split vertical to right side
 vim.opt.splitbelow = true -- split horizontal to bottom side
 
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "90" -- column on the right side to remind me of max line length

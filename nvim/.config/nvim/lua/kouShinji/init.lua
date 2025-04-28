@@ -6,3 +6,6 @@ require("kouShinji.remaps")
 
 -- Personal autocommands
 require("kouShinji.autocommands")
+
+-- Personal global variables/functions
+require("kouShinji.globals")
