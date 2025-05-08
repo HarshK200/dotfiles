@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 
 -- <space>pv executes :Ex
--- vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
+vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 
 -- moves the cursor down and center's the screen there
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
