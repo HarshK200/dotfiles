@@ -2,6 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
+		"mason-org/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
@@ -79,92 +80,38 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
-			--  NOTE: will be called automatically for all the servers that don't have a dedicated handler
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
+		--  will be called automatically for all the servers that don't have a dedicated config
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
 
-			--custom handler for the graphql
-			["graphql"] = function()
-				-- configure graphql language server
-				lspconfig["graphql"].setup({
-					capabilities = capabilities,
-					filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-				})
-			end,
-
-			--custom handler for the lua_ls
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
+		vim.lsp.config("lua_ls", {
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = {
+							"vim",
+						},
+						completion = {
+							callSnippet = "Replace",
 						},
 					},
-				})
-			end,
+				},
+			},
+		})
 
-			--custom handler for rust
-			["rust_analyzer"] = function()
-				local rt = require("rust-tools")
-				rt.setup({
-					server = {
-						capabilities = capabilities,
-						settings = {
-							["rust-analyzer"] = {
-								cargo = {
-									loadOutDirsFromCheck = true,
-								},
-								procMacro = {
-									enable = true,
-								},
-							},
-						},
-						on_attach = function(_, bufnr)
-							-- Custom key mappings or other setup
-							vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-						end,
-					},
-				})
+		vim.lsp.config("sqlls", {
+			capabilities = capabilities,
+			filetypes = { "sql", "mysql", "psql" },
+			root_dir = function(_)
+				return vim.loop.cwd()
 			end,
+		})
 
-			--custom handler for the html
-			["html"] = function()
-				-- configure html language server
-				lspconfig["html"].setup({
-					capabilities = capabilities,
-					filetypes = { "html", "template" },
-				})
-			end,
-
-			--custom handler for sql
-			["sqlls"] = function()
-				lspconfig["sqlls"].setup({
-					capabilities = capabilities,
-					filetypes = { "sql", "mysql", "psql" },
-					root_dir = function(_)
-						return vim.loop.cwd()
-					end,
-				})
-			end,
-
-			["omnisharp"] = function()
-				lspconfig["omnisharp"].setup({
-					cmd = { "omnisharp" }, -- Ensure 'omnisharp' binary is in your PATH
-					capabilities = capabilities,
-				})
-			end,
+		vim.lsp.config("omnisharp", {
+			capabilities = capabilities,
+			cmd = { "omnisharp" }, -- Ensure 'omnisharp' binary is in your PATH
 		})
 
 		------------------------ UI STUFF ------------------------

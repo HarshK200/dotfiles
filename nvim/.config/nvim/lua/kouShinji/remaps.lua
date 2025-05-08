@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 
 -- <space>pv executes :Ex
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
+-- vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 
 -- moves the cursor down and center's the screen there
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -27,4 +27,4 @@ vim.keymap.set("n", "<C-k>", ":cprev<CR>")
 vim.keymap.set("n", "<C-j>", ":cnext<CR>")
 
 -- remaping the stupid fu*king sql filetype plugin omin_key from ctrl+c to ctrl+j
-vim.g.ftplugin_sql_omni_key = '<C-j>'
+vim.g.ftplugin_sql_omni_key = "<C-j>"

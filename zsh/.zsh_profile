@@ -76,14 +76,16 @@ export PATH="$PATH:$GOPATH/bin"
 # for solana cli web3
 export PATH="/home/harsh/.local/share/solana/install/active_release/bin":$PATH
 
-# zen browser path
-export PATH="/home/harsh/.local/zen/":$PATH
-
 # for asperite (pixel art software)
 export PATH="/home/harsh/.local/share/aseprite/bin/":$PATH
 
 # the greatest editor of all time
 export PATH="/opt/nvim/bin":$PATH
+
+# Android studio sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 
 # =========================== For japanese typing lanugage setup ==============================
