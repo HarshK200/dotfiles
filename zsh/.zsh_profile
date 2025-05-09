@@ -45,9 +45,18 @@ alias nd="npm run dev"
 
 # =========================== LANGUAGES AND THERE PACKAGE MANAGER IMPORTS ==============================
 
-# loading the slow af nvm and node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# Lazy-load nvm, node, npm, and npx
+lazynvm() {
+  unset -f nvm node npm npx
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+}
+
+nvm() { lazynvm; nvm "$@"; }
+node() { lazynvm; node "$@"; }
+npm() { lazynvm; npm "$@"; }
+npx() { lazynvm; npx "$@"; }
+
 
 # bun completions
 [ -s "/home/harsh/.bun/_bun" ] && source "/home/harsh/.bun/_bun"
@@ -63,21 +72,25 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# for golang version manager
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
+# goenv golang version manager()
+lazygoenv() {
+  unset -f goenv go
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  eval "$(goenv init -)"
+  export PATH="$GOROOT/bin:$PATH"
+  export PATH="$PATH:$GOPATH/bin"
+}
+
+goenv() { lazygoenv; goenv "$@"; }
+go()    { lazygoenv; go "$@"; }
+
 
 
 # =========================== PROGRAM PATH VARIABLS EXPORTS ==============================
 
 # for solana cli web3
 export PATH="/home/harsh/.local/share/solana/install/active_release/bin":$PATH
-
-# for asperite (pixel art software)
-export PATH="/home/harsh/.local/share/aseprite/bin/":$PATH
 
 # the greatest editor of all time
 export PATH="/opt/nvim/bin":$PATH
