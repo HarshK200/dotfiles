@@ -29,7 +29,7 @@ return {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
             ["<C-j>"] = actions.move_selection_next, -- move to next result
             ["<C-q>"] = actions.send_to_qflist + actions.open_qflist, -- send the telescope search results to quickfix list
-            ["<C-t>"] = trouble_telescope.open,
+            -- ["<C-t>"] = trouble_telescope.open,
           },
         },
         file_ignore_patterns = { "node_modules",  "next/"}

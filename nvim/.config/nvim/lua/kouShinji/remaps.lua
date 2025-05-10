@@ -28,3 +28,6 @@ vim.keymap.set("n", "<C-j>", ":cnext<CR>")
 
 -- remaping the stupid fu*king sql filetype plugin omin_key from ctrl+c to ctrl+j
 vim.g.ftplugin_sql_omni_key = "<C-j>"
+
+-- remapping to execute the current file under the cursor
+vim.keymap.set("n", "<leader><leader>x", ":luafile %<CR>")

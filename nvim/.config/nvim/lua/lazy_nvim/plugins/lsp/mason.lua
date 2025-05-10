@@ -22,6 +22,7 @@ return {
 		})
 
 		mason_lspconfig.setup({
+            automatic_enable = true,
 			ensure_installed = {
 				"html",
 				"tailwindcss",

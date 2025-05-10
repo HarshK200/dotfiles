@@ -86,32 +86,26 @@ return {
 		})
 
 		vim.lsp.config("lua_ls", {
-			capabilities = capabilities,
 			settings = {
 				Lua = {
+					runtime = {
+						version = "LuaJIT",
+						path = vim.split(package.path, ";"),
+					},
 					diagnostics = {
-						globals = {
-							"vim",
+						globals = { "vim" },
+					},
+					workspace = {
+						library = {
+							vim.env.VIMRUNTIME,
 						},
-						completion = {
-							callSnippet = "Replace",
-						},
+						checkThirdParty = false,
+					},
+					telemetry = {
+						enable = false,
 					},
 				},
 			},
-		})
-
-		vim.lsp.config("sqlls", {
-			capabilities = capabilities,
-			filetypes = { "sql", "mysql", "psql" },
-			root_dir = function(_)
-				return vim.loop.cwd()
-			end,
-		})
-
-		vim.lsp.config("omnisharp", {
-			capabilities = capabilities,
-			cmd = { "omnisharp" }, -- Ensure 'omnisharp' binary is in your PATH
 		})
 
 		------------------------ UI STUFF ------------------------
