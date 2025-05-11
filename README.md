@@ -15,6 +15,10 @@ Make sure stow is installed on your system
 ```sh
 sudo apt-get install stow
 ```
+Also for neovim make sure you have `grep` and `ripgrep` installed since the telescope plugin utilizes those
+```sh
+sudo apt-get install grep ripgrep
+```
 
 then just run the following command from within the repo directory
 ## making the symlinks (if you have no idea what those are just copy the below commands and run them)
