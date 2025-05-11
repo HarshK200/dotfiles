@@ -71,13 +71,27 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		-- default config for all the lsp client
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
+
+		-- lua_ls custom config
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
+
+			-- this configures to stop the lsp client specifically for premake5.lua file
+			-- on attaching to a buffer
+			on_attach = function(client, bufnr)
+				local filename = vim.api.nvim_buf_get_name(bufnr)
+				if filename:match("premake5%.lua$") then
+					client.stop()
+					return
+				end
+			end,
+
 			settings = {
 				Lua = {
-					runtime = {
-						version = "LuaJIT",
-					},
 					diagnostics = {
 						globals = { "vim" },
 					},
@@ -87,7 +101,7 @@ return {
 						},
 					},
 					telemetry = {
-						enable = false, -- Disable telemetry
+						enable = false, -- Disable telemetry (data collection)
 					},
 				},
 			},

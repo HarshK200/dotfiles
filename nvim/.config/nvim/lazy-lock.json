@@ -36,7 +36,6 @@
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f" },
   "nvim-ufo": { "branch": "main", "commit": "3c7a3570e9c9dc198a2ad4491b0b0e51c4d4ba08" },
   "nvim-web-devicons": { "branch": "master", "commit": "f1420728f59843eb2ef084406b3d0201a0a0932d" },
-  "omnisharp-vim": { "branch": "master", "commit": "cdbf65bc4385d7026428d2f392b40a317725cc9c" },
   "playtime.nvim": { "branch": "main", "commit": "44b03ebd3234e7590e21a6cf3d9920e66d4c0391" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },

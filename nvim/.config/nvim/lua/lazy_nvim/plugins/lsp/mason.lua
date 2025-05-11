@@ -28,8 +28,6 @@ return {
 				"tailwindcss",
 				"lua_ls",
 				"pyright",
-				"rust_analyzer",
-				"omnisharp",
 			},
 		})
 
