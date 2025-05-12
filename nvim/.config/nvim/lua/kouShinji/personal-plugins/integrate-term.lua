@@ -1,18 +1,17 @@
 -- remaps double tap escape to exit terminal mode
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
--- remaps ctrl+t to exit terminal mode and also
-vim.keymap.set("t", "<C-t>", "<c-\\><c-n>:IntTermToggle<CR>")
--- remaps to if not a terminal then IntTermToggle and start insert mode
--- else if it is a terminal just IntTermToggle 
 local function toggle_int_term()
-	if vim.bo.buftype == "terminal" then
+	local is_term_open = vim.api.nvim_exec2("IntTermIsOpen", { output = true })
+
+	if is_term_open.output == "true" then
 		vim.cmd("IntTermToggle")
 	else
 		vim.cmd("IntTermToggle")
 		vim.cmd("startinsert")
 	end
 end
-vim.keymap.set("n", "<C-t>", toggle_int_term)
+-- remaps ctrl+t to toggle terminal
+vim.keymap.set({ "n", "t" }, "<C-t>", toggle_int_term)
 
 local state = {
 	floating = {
@@ -21,10 +20,12 @@ local state = {
 	},
 }
 
+-- This just creates the window for the terminal
+-- NOTE: this does not open the terminal (it only opens a window)
 function CreateTerminalWindow(opts)
 	local width = vim.o.columns
 	local height = math.floor(vim.o.lines * 0.33)
-	local row = vim.o.lines - height - 1 -- -1 for cmd line
+	local row = vim.o.lines - height
 
 	local buf_id = nil
 	if not (vim.api.nvim_buf_is_valid(opts.buf)) then
@@ -44,6 +45,8 @@ function CreateTerminalWindow(opts)
 	return { buf = buf_id, win = win_id }
 end
 
+---------------------- USER COMMANDS ----------------------
+
 vim.api.nvim_create_user_command("IntTermToggle", function()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
 		state.floating = CreateTerminalWindow({ buf = state.floating.buf })
@@ -54,3 +57,9 @@ vim.api.nvim_create_user_command("IntTermToggle", function()
 		vim.api.nvim_win_hide(state.floating.win)
 	end
 end, {})
+
+vim.api.nvim_create_user_command("IntTermIsOpen", function()
+	print(vim.api.nvim_win_is_valid(state.floating.win))
+end, {})
+
+vim.api.nvim_create_user_command("IntTermExecute", function() end, {})
