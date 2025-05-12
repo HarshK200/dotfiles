@@ -62,4 +62,13 @@ vim.api.nvim_create_user_command("IntTermIsOpen", function()
 	print(vim.api.nvim_win_is_valid(state.floating.win))
 end, {})
 
-vim.api.nvim_create_user_command("IntTermExecute", function() end, {})
+vim.api.nvim_create_user_command("IntTermExecute", function(args)
+	-- if terminal not open then open it
+	if not vim.api.nvim_win_is_valid(state.floating.win) then
+		vim.cmd("IntTermToggle")
+		vim.cmd("startinsert")
+	end
+
+	local job_id = vim.bo.channel
+	vim.fn.chansend(job_id, { args.args .. "\r\n" })
+end, {})
