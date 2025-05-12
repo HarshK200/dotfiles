@@ -1,5 +1,8 @@
+------------------------ REMAPS ------------------------
 -- remaps double tap escape to exit terminal mode
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+
+-- remaps ctrl+t to toggle terminal
 local function toggle_int_term()
 	local is_term_open = vim.api.nvim_exec2("IntTermIsOpen", { output = true })
 
@@ -10,8 +13,12 @@ local function toggle_int_term()
 		vim.cmd("startinsert")
 	end
 end
--- remaps ctrl+t to toggle terminal
 vim.keymap.set({ "n", "t" }, "<C-t>", toggle_int_term)
+
+-- remaps <F10> to generate the bin files for c++ project
+vim.keymap.set({ "n", "t" }, "<F10>", ':IntTermExecute "./GenerateProjects.sh"<CR>')
+
+---------------------- MAIN CODE ----------------------
 
 local state = {
 	floating = {
@@ -69,6 +76,8 @@ vim.api.nvim_create_user_command("IntTermExecute", function(args)
 		vim.cmd("startinsert")
 	end
 
-	local job_id = vim.bo.channel
-	vim.fn.chansend(job_id, { args.args .. "\r\n" })
+	vim.defer_fn(function()
+		local job_id = vim.bo.channel
+		vim.fn.chansend(job_id, { args.args .. "\r\n" })
+	end, 1000)
 end, {})
