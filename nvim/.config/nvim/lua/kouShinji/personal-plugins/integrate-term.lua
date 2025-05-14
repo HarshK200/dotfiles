@@ -72,14 +72,20 @@ vim.api.nvim_create_user_command("IntTermIsOpen", function()
 end, {})
 
 vim.api.nvim_create_user_command("IntTermExecute", function(args)
+	local isFirstLoad = not vim.api.nvim_buf_is_loaded(state.floating.buf)
 	-- if terminal not open then open it
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		vim.cmd("IntTermToggle")
+		vim.cmd("IntTermToggle") -- loads the buffer & opens window if not loaded
 		vim.cmd("startinsert")
 	end
 
-	vim.defer_fn(function()
-		local job_id = vim.bo.channel
+	if isFirstLoad then
+		vim.defer_fn(function()
+			local job_id = vim.bo[state.floating.buf].channel
+			vim.fn.chansend(job_id, { args.args .. "\r\n" })
+		end, 1000)
+	else
+		local job_id = vim.bo[state.floating.buf].channel
 		vim.fn.chansend(job_id, { args.args .. "\r\n" })
-	end, 1000)
+	end
 end, {})
