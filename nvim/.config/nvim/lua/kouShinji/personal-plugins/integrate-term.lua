@@ -16,7 +16,7 @@ end
 vim.keymap.set({ "n", "t" }, "<C-t>", toggle_int_term)
 
 -- remaps <F10> to generate the bin files for c++ project
-vim.keymap.set({ "n", "t" }, "<F10>", ':IntTermExecute "./GenerateProjects.sh"<CR>')
+vim.keymap.set({ "n", "t" }, "<F10>", ':IntTermExecute "make"<CR>')
 
 ---------------------- MAIN CODE ----------------------
 
@@ -26,6 +26,8 @@ local state = {
 		win = -1,
 	},
 }
+
+local IntTermGroup = vim.api.nvim_create_augroup("IntTermGroup", { clear = true })
 
 -- This just creates the window for the terminal
 -- NOTE: this does not open the terminal (it only opens a window)
@@ -51,6 +53,15 @@ function CreateTerminalWindow(opts)
 	})
 	return { buf = buf_id, win = win_id }
 end
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+	group = IntTermGroup,
+	callback = function(args)
+		if vim.api.nvim_buf_is_loaded(state.floating.buf) then
+			vim.api.nvim_buf_delete(state.floating.buf, { force = true })
+		end
+	end,
+})
 
 ---------------------- USER COMMANDS ----------------------
 
