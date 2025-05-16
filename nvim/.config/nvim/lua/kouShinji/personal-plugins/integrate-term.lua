@@ -2,21 +2,9 @@
 -- remaps double tap escape to exit terminal mode
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
--- remaps ctrl+t to toggle terminal
-local function toggle_int_term()
-	local is_term_open = vim.api.nvim_exec2("IntTermIsOpen", { output = true })
-
-	if is_term_open.output == "true" then
-		vim.cmd("IntTermToggle")
-	else
-		vim.cmd("IntTermToggle")
-		vim.cmd("startinsert")
-	end
-end
-vim.keymap.set({ "n", "t" }, "<C-t>", toggle_int_term)
-
--- remaps <F10> to generate the bin files for c++ project
-vim.keymap.set({ "n", "t" }, "<F10>", ':IntTermExecute "make"<CR>')
+-- toggle terminal commands
+vim.keymap.set({ "n" }, "<C-t>", ":IntTerm<CR>")
+vim.keymap.set({ "t" }, "<C-t>", "<c-\\><c-n>:IntTerm<CR>")
 
 ---------------------- MAIN CODE ----------------------
 
@@ -25,17 +13,21 @@ local state = {
 		buf = -1,
 		win = -1,
 	},
+	-- delay in miliseconds to execute an command on the first terminal load
+	-- because terminal takes time to open first time
+	firstLoadDelay = 1000,
 }
 
 local IntTermGroup = vim.api.nvim_create_augroup("IntTermGroup", { clear = true })
 
 -- This just creates the window for the terminal
 -- NOTE: this does not open the terminal (it only opens a window)
-function CreateTerminalWindow(opts)
+local function CreateWindow(opts)
 	local width = vim.o.columns
 	local height = math.floor(vim.o.lines * 0.33)
 	local row = vim.o.lines - height
 
+	-- if buffer is not valid then create it else use the already valid buffer
 	local buf_id = nil
 	if not (vim.api.nvim_buf_is_valid(opts.buf)) then
 		buf_id = vim.api.nvim_create_buf(false, false)
@@ -56,36 +48,17 @@ end
 
 ---------------------- USER COMMANDS ----------------------
 
-vim.api.nvim_create_user_command("IntTermToggle", function()
+vim.api.nvim_create_user_command("IntTerm", function(opts)
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		state.floating = CreateTerminalWindow({ buf = state.floating.buf })
+		-- creating an floating window with a scratch buffer for the terminal to open in
+		state.floating = CreateWindow({ buf = state.floating.buf })
+
+		-- open the terminal if the buffer is doesn't have one (only possible when buffer is freshly opened)
 		if vim.bo[state.floating.buf].buftype ~= "terminal" then
 			vim.cmd.terminal()
 		end
+		vim.cmd("startinsert") -- puts you into insert i.e. terminal mode
 	else
 		vim.api.nvim_win_hide(state.floating.win)
-	end
-end, {})
-
-vim.api.nvim_create_user_command("IntTermIsOpen", function()
-	print(vim.api.nvim_win_is_valid(state.floating.win))
-end, {})
-
-vim.api.nvim_create_user_command("IntTermExecute", function(args)
-	local isFirstLoad = not vim.api.nvim_buf_is_loaded(state.floating.buf)
-	-- if terminal not open then open it
-	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		vim.cmd("IntTermToggle") -- loads the buffer & opens window if not loaded
-		vim.cmd("startinsert")
-	end
-
-	if isFirstLoad then
-		vim.defer_fn(function()
-			local job_id = vim.bo[state.floating.buf].channel
-			vim.fn.chansend(job_id, { args.args .. "\r\n" })
-		end, 1000)
-	else
-		local job_id = vim.bo[state.floating.buf].channel
-		vim.fn.chansend(job_id, { args.args .. "\r\n" })
 	end
 end, {})

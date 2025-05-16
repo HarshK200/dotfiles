@@ -13,10 +13,10 @@ return {
 	},
 	config = function()
 		-- keymaps
-		vim.keymap.set("n", "<S-F9>", ":lua require'dap'.continue()<CR>")
-		vim.keymap.set("n", "<S-F10>", ":lua require'dap'.step_over()<CR>")
-		vim.keymap.set("n", "<S-F11>", ":lua require'dap'.step_into()<CR>")
-		vim.keymap.set("n", "<S-F12>", ":lua require'dap'.step_out()<CR>")
+		vim.keymap.set("n", "<C-F9>", ":lua require'dap'.continue()<CR>")
+		vim.keymap.set("n", "<C-F10>", ":lua require'dap'.step_over()<CR>")
+		vim.keymap.set("n", "<C-F11>", ":lua require'dap'.step_into()<CR>")
+		vim.keymap.set("n", "<C-F12>", ":lua require'dap'.step_out()<CR>")
 		vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
 
 		local dap = require("dap")
@@ -37,18 +37,18 @@ return {
 
 		------------------------ DAP UI SETUP ------------------------
 		dapui.setup({
-			icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
+			icons = { expanded = "", collapsed = "", current_frame = "" },
 			controls = {
 				icons = {
-					pause = "⏸",
-					play = "▶",
-					step_into = "⏎",
-					step_over = "⏭",
-					step_out = "⏮",
-					step_back = "b",
+					pause = "",
+					play = "",
+					step_into = "󰿄",
+					step_over = "",
+					step_out = "",
+					step_back = "",
 					run_last = "▶▶",
-					terminate = "⏹",
-					disconnect = "⏏",
+					terminate = "",
+					disconnect = "",
 				},
 			},
 		})
@@ -57,10 +57,10 @@ return {
 		vim.api.nvim_set_hl(0, "DapStop", { fg = "#ffcc00" })
 		local breakpoint_icons = {
 			Breakpoint = "●",
-			BreakpointCondition = "⊜",
+			BreakpointCondition = "",
 			BreakpointRejected = "⊘",
 			LogPoint = "◆",
-			Stopped = "⭔",
+			Stopped = "",
 		}
 		for type, icon in pairs(breakpoint_icons) do
 			local tp = "Dap" .. type
