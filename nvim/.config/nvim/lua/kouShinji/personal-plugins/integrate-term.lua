@@ -30,7 +30,7 @@ local function CreateWindow(opts)
 	-- if buffer is not valid then create it else use the already valid buffer
 	local buf_id = nil
 	if not (vim.api.nvim_buf_is_valid(opts.buf)) then
-		buf_id = vim.api.nvim_create_buf(false, false)
+		buf_id = vim.api.nvim_create_buf(false, true)
 	else
 		buf_id = opts.buf
 	end

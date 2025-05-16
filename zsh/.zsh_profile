@@ -78,7 +78,7 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="/home/harsh/.local/share/solana/install/active_release/bin":$PATH
 
 # for asperite (pixel art software)
-export PATH="/home/harsh/.local/share/aseprite/bin/":$PATH
+export PATH="/opt/aseprite":$PATH
 
 # the greatest editor of all time
 export PATH="/opt/nvim/bin":$PATH
