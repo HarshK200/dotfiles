@@ -20,7 +20,7 @@ return {
 			local width = vim.o.columns
 			local height = math.floor(vim.o.lines * 0.33)
 			local row = vim.o.lines - height
-			local hadError = false
+			local filetype = vim.bo.filetype
 
 			local buf_id = vim.api.nvim_create_buf(false, true) -- create a new scratch buffer
 			local win_id = vim.api.nvim_open_win(buf_id, true, {
@@ -33,44 +33,38 @@ return {
 				border = { "", "─", "", "", "", "", "", "" },
 			})
 
-			-- TODO: add if else cases checking the current buffer type if its .cpp then
-			-- call make else check for other like go for e.g.
-			vim.fn.jobstart("make", {
-				on_stdout = function(_, data)
-					if data and not hadError then
-						vim.api.nvim_buf_set_lines(buf_id, -2, -1, false, data)
-					end
-				end,
-				on_stderr = function(_, err)
-					if err[1] ~= "" then
-						if not hadError then
-							hadError = true
-							vim.api.nvim_buf_set_lines(
-								buf_id,
-								-2,
-								-1,
-								false,
-								{ "", "", "Error occured during compilation:", "", "" }
-							)
+			if filetype == "cpp" then
+				vim.fn.jobstart("make", {
+					term = true, -- INFO: start a sudo terminal
+					on_exit = function(_, exit_code)
+						if not (exit_code > 0) then
+							-- INFO: close build output window and starting the debugger after build is done
+							vim.api.nvim_win_close(win_id, true)
+							dap.continue()
 						end
-						vim.api.nvim_buf_set_lines(buf_id, -2, -1, false, err)
-					end
-				end,
-				on_exit = function()
-					if not hadError then
-						vim.api.nvim_win_close(win_id, true)
-
-						dap.continue()
-					end
-				end,
-			})
+					end,
+				})
+			elseif filetype == "odin" then
+				vim.fn.jobstart({ "odin", "run", "." }, {
+					term = true, -- INFO: start a sudo terminal
+					on_exit = function(_, exit_code)
+						if not (exit_code > 0) then
+							-- INFO: close build output window and starting the debugger after build is done
+							vim.api.nvim_win_close(win_id, true)
+							dap.continue()
+						end
+					end,
+				})
+			else
+				print("No config found for filetype: " .. filetype)
+			end
 		end, { desc = "this builds the project using make and then starts the debugger" })
 
 		-- vim.keymap.set("n", "<C-F9>", ":lua require'dap'.continue()<CR>")
-		vim.keymap.set("n", "<C-F10>", ":lua require'dap'.step_over()<CR>")
-		vim.keymap.set("n", "<C-F11>", ":lua require'dap'.step_into()<CR>")
-		vim.keymap.set("n", "<C-F12>", ":lua require'dap'.step_out()<CR>")
-		vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
+		vim.keymap.set("n", "<C-F10>", dap.step_over)
+		vim.keymap.set("n", "<C-F11>", dap.step_into)
+		vim.keymap.set("n", "<C-F12>", dap.step_out)
+		vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
 
 		-- actual dap setup
 		require("mason-nvim-dap").setup({
