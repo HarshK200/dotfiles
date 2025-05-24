@@ -9,7 +9,7 @@ return {
 		"mason-org/mason.nvim",
 
 		-- Add your own debuggers here
-		"leoluz/nvim-dap-go",
+		-- TODO:(maybe add nvim dap-go here)
 	},
 	config = function()
 		local dap = require("dap")
@@ -17,11 +17,11 @@ return {
 
 		-- keymaps
 		vim.keymap.set("n", "<C-F9>", function()
+			-- INFO: creating window for output
+			local filetype = vim.bo.filetype
 			local width = vim.o.columns
 			local height = math.floor(vim.o.lines * 0.33)
 			local row = vim.o.lines - height
-			local filetype = vim.bo.filetype
-
 			local buf_id = vim.api.nvim_create_buf(false, true) -- create a new scratch buffer
 			local win_id = vim.api.nvim_open_win(buf_id, true, {
 				relative = "editor",
@@ -45,7 +45,7 @@ return {
 					end,
 				})
 			elseif filetype == "odin" then
-				vim.fn.jobstart({ "odin", "run", "." }, {
+				vim.fn.jobstart({ "odin", "build", ".", "-debug", "-out:bin/debug/out" }, {
 					term = true, -- INFO: start a sudo terminal
 					on_exit = function(_, exit_code)
 						if not (exit_code > 0) then
@@ -58,7 +58,7 @@ return {
 			else
 				print("No config found for filetype: " .. filetype)
 			end
-		end, { desc = "this builds the project using make and then starts the debugger" })
+		end, { desc = "build the project for currently open filetype & starts the debugger with the built executable" })
 
 		-- vim.keymap.set("n", "<C-F9>", ":lua require'dap'.continue()<CR>")
 		vim.keymap.set("n", "<C-F10>", dap.step_over)
@@ -73,14 +73,8 @@ return {
 			ensure_installed = {
 				-- NOTE: install these debuggers via mason if needed but i'm just using gdb on my system
 				-- and i'll probably use go binary for golang
-
-				-- "delve", -- for golang
-				-- "codelldb", -- for c++
 			},
 		})
-
-		-- golang dap config
-		require("dap-go").setup()
 
 		------------------------ DAP UI SETUP ------------------------
 		dapui.setup({
@@ -120,13 +114,14 @@ return {
 		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
 		dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-		-- configuring debug adapters
+		-- INFO: config for debug adapters
 
-		-- dap.configurations.cpp
 		dap.adapters.gdb = {
 			type = "executable",
 			command = "/usr/bin/gdb",
 			args = { "-i", "dap" },
 		}
+
+		-- dap.
 	end,
 }
