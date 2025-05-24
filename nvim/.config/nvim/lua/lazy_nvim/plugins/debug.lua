@@ -109,7 +109,7 @@ return {
 			vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
 		end
 
-		-- automatically opens/close the UI when the debugger starts
+		-- INFO: automatically opens/close the UI when the debugger starts
 		dap.listeners.after.event_initialized["dapui_config"] = dapui.open
 		dap.listeners.before.event_terminated["dapui_config"] = dapui.close
 		dap.listeners.before.event_exited["dapui_config"] = dapui.close
@@ -122,6 +122,13 @@ return {
 			args = { "-i", "dap" },
 		}
 
-		-- dap.
+		dap.adapters.codelldb = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = "/home/harsh/.local/share/nvim/mason/bin/codelldb",
+				args = { "--port", "${port}" },
+			},
+		}
 	end,
 }
