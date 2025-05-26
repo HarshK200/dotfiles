@@ -23,15 +23,15 @@ return {
 			keywords = {
 				FIX = {
 					icon = " ", -- icon used for the sign, and in search results
-					color = "error", -- can be a hex color, or a named color (see below)
+					color = "#e78284", -- can be a hex color, or a named color (see below)
 					alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "ERROR", "ERR" }, -- a set of other keywords that all map to this FIX keywords
 				},
-				TODO = { icon = " ", color = "info" },
-				HACK = { icon = " ", color = "warning" },
-				WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-				PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-				NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-				TEST = { icon = " ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+				TODO = { icon = " ", color = "#85c1dc" },
+				NOTE = { icon = " ", color = "#587b85", alt = { "INFO" } },
+				HACK = { icon = " ", color = "#e5c890" },
+				WARN = { icon = " ", color = "#e5c890", alt = { "WARNING", "XXX" } },
+				PERF = { icon = " ", color = "#ca9ee6", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+				TEST = { icon = " ", color = "#ca9ee6", alt = { "TESTING", "PASSED", "FAILED" } },
 			},
 			gui_style = {
 				fg = "NONE",
