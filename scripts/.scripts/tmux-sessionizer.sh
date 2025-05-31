@@ -11,9 +11,10 @@ directories=(
 
 # NOTE: SUB-DIRECTORIES NOT INCLUDED
 extra_directories=(
-    "/home/harsh/.dotfiles"
+    "$HOME/dev"
     "$HOME/.scripts"
-    "/media/harsh/DATA/"
+    "/home/harsh/.dotfiles"
+    "/media/harsh/DATA"
 )
 
 found_subdirs=$(printf "%s\n" "${directories[@]}" | xargs -I {} find {} -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
