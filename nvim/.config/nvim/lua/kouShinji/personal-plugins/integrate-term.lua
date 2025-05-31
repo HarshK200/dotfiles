@@ -46,6 +46,15 @@ local function CreateWindow(opts)
 	return { buf = buf_id, win = win_id }
 end
 
+-- vim.api.nvim_create_autocmd("QuitPre", {
+-- 	group = IntTermGroup,
+-- 	callback = function(args)
+-- 		if state.floating.buf > 0 then
+-- 			vim.api.nvim_buf_delete(state.floating.buf, { force = true })
+-- 		end
+-- 	end,
+-- })
+
 ---------------------- USER COMMANDS ----------------------
 
 vim.api.nvim_create_user_command("IntTerm", function(opts)
