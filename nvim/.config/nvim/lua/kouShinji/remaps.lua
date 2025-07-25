@@ -31,9 +31,9 @@ vim.g.ftplugin_sql_omni_key = "<C-j>"
 -- remapping to execute the current file under the cursor
 vim.keymap.set("n", "<leader><leader>x", ":luafile %<CR>")
 
--- remapping for tabs
+-- remapping tabs to t1, t2, t3 and so on...
 vim.keymap.set("n", "tn", ":tabnew<CR>")
 vim.keymap.set("n", "to", ":tabonly<CR>")
-for i = 1, 3 do
+for i = 1, 9 do
 	vim.keymap.set("n", "t" .. i, ":tabn" .. i .. "<CR>")
 end
