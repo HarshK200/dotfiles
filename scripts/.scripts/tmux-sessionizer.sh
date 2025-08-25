@@ -4,9 +4,9 @@
 directories=(
     "$HOME/dev/"
     "$HOME/dev/go/"
-    "/media/harsh/DATA/code/"
-    "/media/harsh/DATA/code/webDev/"
-    "/media/harsh/DATA/code/cohort3/"
+    "/mnt/d/code/"
+    "/mnt/d/code/webDev/"
+    "/mnt/d/code/college/"
 )
 
 # NOTE: SUB-DIRECTORIES NOT INCLUDED
@@ -14,7 +14,7 @@ extra_directories=(
     "$HOME/dev"
     "$HOME/.scripts"
     "/home/harsh/.dotfiles"
-    "/media/harsh/DATA"
+    "/mnt/d/"
 )
 
 found_subdirs=$(printf "%s\n" "${directories[@]}" | xargs -I {} find {} -mindepth 1 -maxdepth 1 -type d 2>/dev/null)

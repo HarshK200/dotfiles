@@ -20,6 +20,15 @@ Also for neovim make sure you have `grep` and `ripgrep` installed since the tele
 sudo apt-get install grep ripgrep
 ```
 
+For tmux config you'll need first stow tmux from dotfiles and then install tpm i.e. tmux plugin manager
+NOTE: you must install tpm in the `~/.config/tmux/plugins/tpm` path by using
+`git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm `
+
+and then after starting tmux type:
+prefix: `ctrl + s`
+followed by: `shift + i`
+
+
 then just run the following command from within the repo directory
 ## making the symlinks (if you have no idea what those are just copy the below commands and run them)
 ```sh

@@ -47,3 +47,24 @@ vim.opt.splitright = true -- split vertical to right side
 vim.opt.splitbelow = true -- split horizontal to bottom side
 
 vim.opt.colorcolumn = "90" -- column on the right side to remind me of max line length
+
+-- NOTE: clipboard settings for nvim with WSL
+vim.g.clipboard = {
+	name = "win32yank-wsl",
+
+	copy = {
+
+		["+"] = "win32yank.exe -i --crlf",
+
+		["*"] = "win32yank.exe -i --crlf",
+	},
+
+	paste = {
+
+		["+"] = "win32yank.exe -o --lf",
+
+		["*"] = "win32yank.exe -o --lf",
+	},
+
+	cache_enabled = 0,
+}
