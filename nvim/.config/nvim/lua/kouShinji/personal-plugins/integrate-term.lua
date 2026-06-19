@@ -18,6 +18,7 @@ local state = {
 	firstLoadDelay = 1000,
 }
 
+-- might be needed in future so just keeping a reference
 local IntTermGroup = vim.api.nvim_create_augroup("IntTermGroup", { clear = true })
 
 -- This just creates the window for the terminal
