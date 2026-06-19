@@ -4,9 +4,7 @@
 directories=(
     "$HOME/dev/"
     "$HOME/dev/go/"
-    "/mnt/d/code/"
-    "/mnt/d/code/webDev/"
-    "/mnt/d/code/college/"
+    "/mnt/c/dev/"
 )
 
 # NOTE: SUB-DIRECTORIES NOT INCLUDED

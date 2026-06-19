@@ -20,7 +20,7 @@ return {
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				python = { "isort", "black" },
-                csharp = { "csharpier" },
+				csharp = { "csharpier" },
 			},
 
 			-- NOTE: Uncomment for format on save
@@ -38,7 +38,7 @@ return {
 				async = false,
 				timeout_ms = 1000,
 			})
-            vim.cmd([[ColorizerReloadAllBuffers]])
+			vim.cmd([[ColorizerReloadAllBuffers]])
 		end, { desc = "Format file or range (in visual mode) also runs reloads colorize" })
 	end,
 }

@@ -2,7 +2,7 @@ return {
 	{
 		-- The line that that comes with the indent
 		"lukas-reineke/indent-blankline.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			indent = {
 				char = "│",
@@ -27,7 +27,7 @@ return {
 	{
 		-- Animates the indentline and also highlights the scope we are in currently
 		"echasnovski/mini.indentscope",
-        event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile" },
 		version = false,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
@@ -48,16 +48,16 @@ return {
 		end,
 		config = function()
 			local mini_indent = require("mini.indentscope")
-            mini_indent.setup({
+			mini_indent.setup({
 				-- symbol = "▏",
 				symbol = "│",
 				options = { try_as_border = true },
-                draw = {
-                    delay = 10,
+				draw = {
+					delay = 10,
 
-                    --Setting the animation to none
-                    animation = mini_indent.gen_animation.none()
-                }
+					--Setting the animation to none
+					animation = mini_indent.gen_animation.none(),
+				},
 			})
 		end,
 	},

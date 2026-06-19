@@ -8,17 +8,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Set indenting to 2 spaces for specific filetypes
-vim.api.nvim_exec(
+vim.api.nvim_exec2(
 	[[
   autocmd FileType javascript,javascriptreact,typescript,typescriptreact,html,css,json setlocal shiftwidth=2
   autocmd FileType javascript,javascriptreact,typescript,typescriptreact,html,css,json setlocal softtabstop=2
   autocmd FileType javascript,javascriptreact,typescript,typescriptreact,html,css,json setlocal tabstop=2
   autocmd FileType javascript,javascriptreact,typescript,typescriptreact,html,css,json setlocal expandtab
 ]],
-	false
+	{ output = false }
 )
 
--- NOTE: for plugings auto update
+-- NOTE: for plugins auto update
 
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = vim.api.nvim_create_augroup("autoupdate", { clear = true }),
@@ -29,12 +29,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 --NOTE: for cursor change on insert
 -- Change cursor to a vertical line in insert mode
-vim.api.nvim_exec(
+vim.api.nvim_exec2(
 	[[
   autocmd InsertEnter * silent! execute 'let &t_SI = "\e[6 q"'
   autocmd InsertLeave * silent! execute 'let &t_EI = "\e[2 q"'
 ]],
-	false
+	{
+		output = false,
+	}
 )
-
-
