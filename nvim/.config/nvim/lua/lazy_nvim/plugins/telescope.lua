@@ -1,9 +1,8 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
+	branch = "master",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 	},
@@ -30,13 +29,11 @@ return {
 				},
 			},
 
-			-- To make fzf native work
-			extensions = {
-				fzf = {},
-			},
+			-- fzf native doesn't work for window
+			-- extensions = {
+			-- 	fzf = {},
+			-- },
 		})
-
-		telescope.load_extension("fzf")
 
 		-- set keymaps
 		vim.keymap.set("n", "<C-f>", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
