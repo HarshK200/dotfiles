@@ -3,14 +3,14 @@
 # NOTE: SUB-DIRECTORIES INCLUDED but not the directory itself
 directories=(
     "$HOME/dev/"
-    "$HOME/dev/go/"
-    "/mnt/c/dev/"
+    "/mnt/c/Users/Harsh/Desktop/dev"
 )
 
 # NOTE: SUB-DIRECTORIES NOT INCLUDED
 extra_directories=(
     "$HOME/dev"
-    "$HOME/.scripts"
+    "/mnt/c/Users/Harsh/Desktop/dev"
+    "/home/harsh/.dotfiles/nvim/.config/nvim"
     "/home/harsh/.dotfiles"
     "/mnt/d/"
 )
