@@ -21,6 +21,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				csharp = { "csharpier" },
+				java = { "google-java-format" },
 			},
 
 			-- NOTE: Uncomment for format on save
