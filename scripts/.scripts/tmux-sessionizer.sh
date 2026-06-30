@@ -4,14 +4,16 @@
 directories=(
     "$HOME/dev/"
     "$HOME/work-dev"
-    "/mnt/c/Users/Harsh/Desktop/dev"
+    "/mnt/c/Users/Harsh/Desktop/win-dev"
     "/mnt/c/Users/Harsh/Desktop/win-work-dev"
 )
 
 # NOTE: SUB-DIRECTORIES NOT INCLUDED
 extra_directories=(
     "$HOME/dev"
-    "/mnt/c/Users/Harsh/Desktop/dev"
+    "$HOME/work-dev"
+    "/mnt/c/Users/Harsh/Desktop/win-dev"
+    "/mnt/c/Users/Harsh/Desktop/win-work-dev"
     "/home/harsh/.dotfiles/nvim/.config/nvim"
     "/home/harsh/.dotfiles"
     "/mnt/d/"
