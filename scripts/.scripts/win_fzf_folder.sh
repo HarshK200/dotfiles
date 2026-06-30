@@ -10,8 +10,6 @@ directories=(
 # NOTE: SUB-DIRECTORIES NOT INCLUDED
 extra_directories=(
     "/c/Users/Harsh/Desktop/"
-    "/c/Users/Harsh/Desktop/win-dev"
-    "/c/Users/Harsh/Desktop/win-work-dev"
     "/c/Users/Harsh/.dotfiles/nvim/.config/nvim"
     "/c/Users/Harsh/.dotfiles"
     "/d"
