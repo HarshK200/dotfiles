@@ -12,6 +12,22 @@ return {
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+		----------------------------------------------------------------
+		-- JAVA-SPECIFIC FIX: Prevent 'bad argument #1 to ipairs' only for java_language_server
+		----------------------------------------------------------------
+		local raw_registration_handler = vim.lsp.handlers["client/registerCapability"]
+		vim.lsp.handlers["client/registerCapability"] = function(err, result, ctx, config)
+			if ctx and ctx.client_id then
+				local client = vim.lsp.get_client_by_id(ctx.client_id)
+				-- Check for 'java_language_server' instead of jdtls
+				if client and client.name == "java_language_server" and result and result.registrations == nil then
+					result.registrations = {}
+				end
+			end
+			return raw_registration_handler(err, result, ctx, config)
+		end
+		----------------------------------------------------------------
+
 		local keymap = vim.keymap -- for conciseness
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),

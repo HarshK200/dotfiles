@@ -3,6 +3,7 @@
 # NOTE: SUB-DIRECTORIES INCLUDED but not the directory itself
 directories=(
     "$HOME/dev/"
+    "$HOME/work-dev"
     "/mnt/c/Users/Harsh/Desktop/dev"
 )
 
