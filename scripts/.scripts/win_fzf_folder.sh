@@ -3,7 +3,8 @@
 # NOTE: SUB-DIRECTORIES INCLUDED but not the directory itself
 directories=(
     "/c/Users/Harsh/Desktop/"
-    "/c/users/Harsh/Desktop/dev"
+    "/c/Users/Harsh/Desktop/dev"
+    "/c/Users/Harsh/Desktop/win-work-dev"
 )
 
 # NOTE: SUB-DIRECTORIES NOT INCLUDED

@@ -5,6 +5,7 @@ directories=(
     "$HOME/dev/"
     "$HOME/work-dev"
     "/mnt/c/Users/Harsh/Desktop/dev"
+    "/mnt/c/Users/Harsh/Desktop/win-work-dev"
 )
 
 # NOTE: SUB-DIRECTORIES NOT INCLUDED
